@@ -5,17 +5,17 @@
   <title>Redirect</title>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      fetch('./map.json')
+      fetch('./list.json')
         .then(response => response.json())
-        .then(rMap => {
+        .then(list => {
           const currentHash = removePrefix(window.location.hash, '#!/');
-          const redirectPath = rMap[currentHash];
+          const redirectPath = list[currentHash];
           if (redirectPath) {
             window.location.href = redirectPath;
           }
         })
         .catch(error => {
-          console.error('Error loading redirect map:', error);
+          console.error('Error loading list:', error);
         });
     });
 
