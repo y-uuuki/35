@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('./map.json')
+        .then(response => response.json())
+        .then(rMap => {
+          const currentHash = removePrefix(window.location.hash, '#!/');
+          const redirectPath = rMap[currentHash];
+          if (redirectPath) {
+            window.location.href = redirectPath;
+          }
+        })
+        .catch(error => {
+          console.error('Error loading redirect map:', error);
+        });
+    });
+
+    function removePrefix(str, prefix) {
+      if (str.startsWith(prefix)) {
+        return str.slice(prefix.length);
+      }
+      return str
+    }
+  </script>
+</head>
+<body>
+  <h1>Just a moment ...</h1>
+</body>
+</html>
