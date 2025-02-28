@@ -11,9 +11,9 @@
           const currentHash = removePrefix(window.location.hash, '#!/');
           const redirectPath = list[currentHash];
           if (redirectPath) {
-            // const h1 = document.querySelector('h1');
-            // h1.textContent = currentHash
-            window.location.href = redirectPath;
+            const h1 = document.querySelector('h1');
+            h1.textContent = currentHash
+            // window.location.href = redirectPath;
           }
         })
         .catch(error => {
